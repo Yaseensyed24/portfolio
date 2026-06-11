@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yasin Ali Syed</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#0a0a0a;--bg2:#111111;--bg3:#181818;
+  --border:#222222;--border2:#2a2a2a;
+  --text:#e8e8e8;--muted:#555555;--muted2:#888888;
+  --gold:#c8882a;--gold2:#e8a83a;--teal:#2ab8a0;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.7;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;}
+.nav-left{display:flex;align-items:center;gap:2rem;}
+.nav-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:var(--text);}
+.nav-status{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted2);}
+.status-dot{width:6px;height:6px;background:var(--teal);border-radius:50%;}
+.nav-links{display:flex;gap:1.75rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;transition:color 0.15s;}
+.nav-links a:hover{color:var(--text);}
+.nav-hire{background:var(--text);color:var(--bg);border:none;padding:6px 16px;border-radius:4px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:opacity 0.2s;}
+.nav-hire:hover{opacity:0.85;}
+
+.hero{padding:5rem 2rem 4rem;max-width:820px;margin:0 auto;border-bottom:1px solid var(--border);}
+.hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.hero-role{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;}
+.hero-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-1px;line-height:1.05;margin-bottom:1.5rem;}
+.hero-title span{color:var(--muted);}
+.hero-meta{display:flex;gap:1.5rem;flex-wrap:wrap;}
+.meta-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted2);}
+.meta-item::before{content:'';width:1px;height:10px;background:var(--border2);}
+.meta-item:first-child::before{display:none;}
+.availability-box{background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:1.25rem 1.5rem;min-width:200px;}
+.av-label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:0.75rem;}
+.av-roles{display:flex;flex-direction:column;gap:6px;}
+.av-role{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted2);}
+.av-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.av-dot.open{background:var(--teal);}
+
+.section{padding:4rem 2rem;max-width:820px;margin:0 auto;border-bottom:1px solid var(--border);}
+.sec-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:2rem;}
+.sec-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+
+.project-list{display:flex;flex-direction:column;gap:1px;background:var(--border);}
+.project-row{background:var(--bg);padding:1.25rem 1rem;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:start;transition:background 0.15s;}
+.project-row:hover{background:var(--bg2);}
+.proj-name{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px;}
+.proj-desc{font-size:13px;color:var(--muted2);line-height:1.65;max-width:520px;margin-bottom:10px;}
+.proj-tech{display:flex;gap:6px;flex-wrap:wrap;}
+.tech-tag{font-size:11px;color:var(--muted);border:1px solid var(--border2);border-radius:3px;padding:2px 8px;}
+.proj-status{font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:3px;white-space:nowrap;}
+.proj-status.wip{color:var(--gold);border:1px solid rgba(200,136,42,0.3);background:rgba(200,136,42,0.06);}
+.proj-status.soon{color:var(--muted);border:1px solid var(--border);}
+
+/* SKILL MAP */
+.map-wrap{border:1px solid var(--border);border-radius:6px;padding:1.25rem;background:var(--bg2);}
+.node-info{margin-top:1rem;padding:0.875rem 1rem;background:var(--bg3);border-left:2px solid var(--border2);font-size:13px;color:var(--muted2);min-height:42px;border-radius:0 4px 4px 0;}
+.node-info strong{color:var(--text);display:block;margin-bottom:2px;font-size:13px;font-weight:500;}
+.svg-node{cursor:pointer;}
+.svg-node rect,.svg-node circle{transition:opacity 0.15s;}
+.svg-node:hover rect,.svg-node:hover circle{opacity:0.7;}
+
+/* PROGRESS RING */
+.progress-label{font-size:9px;fill:#555;text-anchor:middle;}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);}
+.contact-cta{grid-column:span 2;background:var(--bg2);padding:2rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.cta-text{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:600;color:var(--text);}
+.cta-sub{font-size:13px;color:var(--muted2);margin-top:3px;}
+.btn-hire{background:var(--text);color:var(--bg);border:none;padding:10px 24px;border-radius:4px;font-size:13px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;white-space:nowrap;transition:opacity 0.2s;}
+.btn-hire:hover{opacity:0.85;}
+.contact-cell{background:var(--bg);padding:1.5rem 1rem;}
+.contact-cell .label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;}
+.contact-cell .value{font-size:14px;color:var(--text);}
+.contact-cell a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--border2);transition:border-color 0.15s;}
+.contact-cell a:hover{border-color:var(--muted2);}
+
+footer{padding:1.5rem 2rem;max-width:820px;margin:0 auto;display:flex;justify-content:space-between;}
+footer p{font-size:12px;color:var(--muted);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <div class="nav-name">Yasin Ali Syed</div>
+    <div class="nav-status"><span class="status-dot"></span>Available for hire</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-hire" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire me</button>
+</nav>
+
+<div style="max-width:820px;margin:0 auto;">
+
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-left">
+      <div class="hero-role">MS Computer Science · Los Angeles, CA</div>
+      <div class="hero-title">Software Engineer.<br><span>Cloud. IT.</span></div>
+      <div class="hero-meta">
+        <div class="meta-item">OPT Authorized</div>
+        <div class="meta-item">Full-time</div>
+        <div class="meta-item">On-site or Remote</div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="availability-box">
+        <div class="av-label">Open to</div>
+        <div class="av-roles">
+          <div class="av-role"><span class="av-dot open"></span>Software Engineering</div>
+          <div class="av-role"><span class="av-dot open"></span>Cloud / DevOps</div>
+          <div class="av-role"><span class="av-dot open"></span>IT Support</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="sec-header"><div class="sec-label">Work</div></div>
+  <div class="project-list">
+    <div class="project-row">
+      <div>
+        <div class="proj-name">AWS Cloud Infrastructure</div>
+        <div class="proj-desc">Provisioning and configuring cloud resources from scratch — EC2, S3, IAM, VPC, security groups. Documented as a reproducible reference.</div>
+        <div class="proj-tech"><span class="tech-tag">AWS</span><span class="tech-tag">EC2</span><span class="tech-tag">S3</span><span class="tech-tag">IAM</span><span class="tech-tag">Linux</span></div>
+      </div>
+      <div><span class="proj-status wip">In progress</span></div>
+    </div>
+    <div class="project-row">
+      <div>
+        <div class="proj-name">Software Engineering Project</div>
+        <div class="proj-desc">A real application solving a concrete problem. Stack and details coming once the first version ships.</div>
+        <div class="proj-tech"><span class="tech-tag">Coming soon</span></div>
+      </div>
+      <div><span class="proj-status soon">Soon</span></div>
+    </div>
+    <div class="project-row">
+      <div>
+        <div class="proj-name">IT / DevOps Automation</div>
+        <div class="proj-desc">Shell scripting and system configuration work. Automating repetitive ops tasks.</div>
+        <div class="proj-tech"><span class="tech-tag">Bash</span><span class="tech-tag">Linux</span><span class="tech-tag">Python</span></div>
+      </div>
+      <div><span class="proj-status soon">Soon</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="sec-header"><div class="sec-label">Skills</div></div>
+  <div class="map-wrap">
+    <svg id="skillmap" viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- connecting lines -->
+      <line x1="340" y1="248" x2="180" y2="122" stroke="#2a2a2a" stroke-width="1"/>
+      <line x1="340" y1="248" x2="340" y2="82" stroke="#2a2a2a" stroke-width="1"/>
+      <line x1="340" y1="248" x2="500" y2="122" stroke="#2a2a2a" stroke-width="1"/>
+      <line x1="340" y1="248" x2="100" y2="248" stroke="#2a2a2a" stroke-width="1"/>
+      <line x1="340" y1="248" x2="100" y2="360" stroke="#2a2a2a" stroke-width="1"/>
+      <line x1="340" y1="248" x2="580" y2="248" stroke="#2a2a2a" stroke-width="1"/>
+      <line x1="340" y1="248" x2="580" y2="360" stroke="#2a2a2a" stroke-width="1"/>
+      <line x1="340" y1="248" x2="185" y2="420" stroke="#2a2a2a" stroke-width="1"/>
+      <line x1="340" y1="248" x2="340" y2="442" stroke="#2a2a2a" stroke-width="1"/>
+      <line x1="340" y1="248" x2="495" y2="420" stroke="#2a2a2a" stroke-width="1"/>
+
+      <!-- CENTER: Cloud Computing -->
+      <g class="svg-node" onclick="showInfo('center')">
+        <circle cx="340" cy="248" r="46" fill="#181818" stroke="#444" stroke-width="1"/>
+        <text font-family="Space Grotesk,sans-serif" font-size="13" font-weight="600" fill="#e8e8e8" x="340" y="242" text-anchor="middle" dominant-baseline="central">Cloud</text>
+        <text font-family="Inter,sans-serif" font-size="11" fill="#555" x="340" y="260" text-anchor="middle" dominant-baseline="central">Computing</text>
+      </g>
+
+      <!-- LINUX — 100% — gold/teal highlight -->
+      <g class="svg-node" onclick="showInfo('linux')">
+        <rect x="110" y="101" width="140" height="42" rx="4" fill="#181818" stroke="#2ab8a0" stroke-width="1"/>
+        <!-- progress bar inside -->
+        <rect x="112" y="137" width="136" height="3" rx="1.5" fill="#222"/>
+        <rect x="112" y="137" width="136" height="3" rx="1.5" fill="#2ab8a0"/>
+        <text font-family="Inter,sans-serif" font-size="13" font-weight="500" fill="#2ab8a0" x="172" y="118" text-anchor="middle" dominant-baseline="central">Linux</text>
+        <text font-family="Inter,sans-serif" font-size="9" fill="#2ab8a0" x="242" y="118" text-anchor="middle" dominant-baseline="central">100%</text>
+      </g>
+
+      <!-- GIT — 10% -->
+      <g class="svg-node" onclick="showInfo('git')">
+        <rect x="270" y="61" width="140" height="42" rx="4" fill="#181818" stroke="#333" stroke-width="0.75"/>
+        <rect x="272" y="97" width="136" height="3" rx="1.5" fill="#222"/>
+        <rect x="272" y="97" width="14" height="3" rx="1.5" fill="#555"/>
+        <text font-family="Inter,sans-serif" font-size="12" font-weight="500" fill="#e8e8e8" x="330" y="78" text-anchor="middle" dominant-baseline="central">Git &amp; Version Control</text>
+        <text font-family="Inter,sans-serif" font-size="9" fill="#555" x="396" y="78" text-anchor="middle" dominant-baseline="central">10%</text>
+      </g>
+
+      <!-- VIRTUALIZATION — 10% -->
+      <g class="svg-node" onclick="showInfo('virt')">
+        <rect x="430" y="101" width="140" height="42" rx="4" fill="#181818" stroke="#333" stroke-width="0.75"/>
+        <rect x="432" y="137" width="136" height="3" rx="1.5" fill="#222"/>
+        <rect x="432" y="137" width="14" height="3" rx="1.5" fill="#555"/>
+        <text font-family="Inter,sans-serif" font-size="13" font-weight="500" fill="#e8e8e8" x="500" y="118" text-anchor="middle" dominant-baseline="central">Virtualization</text>
+        <text font-family="Inter,sans-serif" font-size="9" fill="#555" x="560" y="118" text-anchor="middle" dominant-baseline="central">10%</text>
+      </g>
+
+      <!-- NETWORKING — 50% -->
+      <g class="svg-node" onclick="showInfo('net')">
+        <rect x="20" y="228" width="160" height="42" rx="4" fill="#181818" stroke="#c8882a" stroke-width="0.75"/>
+        <rect x="22" y="264" width="156" height="3" rx="1.5" fill="#222"/>
+        <rect x="22" y="264" width="78" height="3" rx="1.5" fill="#c8882a"/>
+        <text font-family="Inter,sans-serif" font-size="12" font-weight="500" fill="#e8a83a" x="88" y="245" text-anchor="middle" dominant-baseline="central">Networking (TCP/IP)</text>
+        <text font-family="Inter,sans-serif" font-size="9" fill="#c8882a" x="166" y="245" text-anchor="middle" dominant-baseline="central">50%</text>
+      </g>
+
+      <!-- DNS — 10% -->
+      <g class="svg-node" onclick="showInfo('dns')">
+        <rect x="20" y="340" width="160" height="42" rx="4" fill="#181818" stroke="#333" stroke-width="0.75"/>
+        <rect x="22" y="376" width="156" height="3" rx="1.5" fill="#222"/>
+        <rect x="22" y="376" width="16" height="3" rx="1.5" fill="#555"/>
+        <text font-family="Inter,sans-serif" font-size="13" font-weight="500" fill="#e8e8e8" x="100" y="357" text-anchor="middle" dominant-baseline="central">DNS &amp; Firewalls</text>
+        <text font-family="Inter,sans-serif" font-size="9" fill="#555" x="166" y="357" text-anchor="middle" dominant-baseline="central">10%</text>
+      </g>
+
+      <!-- PYTHON — 60% -->
+      <g class="svg-node" onclick="showInfo('py')">
+        <rect x="500" y="228" width="150" height="42" rx="4" fill="#181818" stroke="#c8882a" stroke-width="0.75"/>
+        <rect x="502" y="264" width="146" height="3" rx="1.5" fill="#222"/>
+        <rect x="502" y="264" width="88" height="3" rx="1.5" fill="#c8882a"/>
+        <text font-family="Inter,sans-serif" font-size="13" font-weight="500" fill="#e8a83a" x="563" y="245" text-anchor="middle" dominant-baseline="central">Python / Bash</text>
+        <text font-family="Inter,sans-serif" font-size="9" fill="#c8882a" x="638" y="245" text-anchor="middle" dominant-baseline="central">60%</text>
+      </g>
+
+      <!-- IaC — 10% -->
+      <g class="svg-node" onclick="showInfo('iac')">
+        <rect x="500" y="340" width="150" height="42" rx="4" fill="#181818" stroke="#333" stroke-width="0.75"/>
+        <rect x="502" y="376" width="146" height="3" rx="1.5" fill="#222"/>
+        <rect x="502" y="376" width="15" height="3" rx="1.5" fill="#555"/>
+        <text font-family="Inter,sans-serif" font-size="13" font-weight="500" fill="#e8e8e8" x="575" y="357" text-anchor="middle" dominant-baseline="central">IaC (Terraform)</text>
+        <text font-family="Inter,sans-serif" font-size="9" fill="#555" x="638" y="357" text-anchor="middle" dominant-baseline="central">10%</text>
+      </g>
+
+      <!-- AWS — 70% -->
+      <g class="svg-node" onclick="showInfo('aws')">
+        <rect x="105" y="400" width="160" height="42" rx="4" fill="#181818" stroke="#e8a83a" stroke-width="1"/>
+        <rect x="107" y="436" width="156" height="3" rx="1.5" fill="#222"/>
+        <rect x="107" y="436" width="109" height="3" rx="1.5" fill="#e8a83a"/>
+        <text font-family="Inter,sans-serif" font-size="12" font-weight="500" fill="#e8a83a" x="173" y="417" text-anchor="middle" dominant-baseline="central">AWS Core Services</text>
+        <text font-family="Inter,sans-serif" font-size="9" fill="#e8a83a" x="253" y="417" text-anchor="middle" dominant-baseline="central">70%</text>
+      </g>
+
+      <!-- DOCKER — 10% -->
+      <g class="svg-node" onclick="showInfo('docker')">
+        <rect x="260" y="422" width="160" height="42" rx="4" fill="#181818" stroke="#333" stroke-width="0.75"/>
+        <rect x="262" y="458" width="156" height="3" rx="1.5" fill="#222"/>
+        <rect x="262" y="458" width="16" height="3" rx="1.5" fill="#555"/>
+        <text font-family="Inter,sans-serif" font-size="12" font-weight="500" fill="#e8e8e8" x="340" y="439" text-anchor="middle" dominant-baseline="central">Docker &amp; Kubernetes</text>
+        <text font-family="Inter,sans-serif" font-size="9" fill="#555" x="408" y="439" text-anchor="middle" dominant-baseline="central">10%</text>
+      </g>
+
+      <!-- CICD — 10% -->
+      <g class="svg-node" onclick="showInfo('cicd')">
+        <rect x="415" y="400" width="150" height="42" rx="4" fill="#181818" stroke="#333" stroke-width="0.75"/>
+        <rect x="417" y="436" width="146" height="3" rx="1.5" fill="#222"/>
+        <rect x="417" y="436" width="15" height="3" rx="1.5" fill="#555"/>
+        <text font-family="Inter,sans-serif" font-size="12" font-weight="500" fill="#e8e8e8" x="490" y="417" text-anchor="middle" dominant-baseline="central">CI/CD Pipelines</text>
+        <text font-family="Inter,sans-serif" font-size="9" fill="#555" x="553" y="417" text-anchor="middle" dominant-baseline="central">10%</text>
+      </g>
+
+    </svg>
+  </div>
+  <div class="node-info" id="node-info"><span style="color:#333;">Click any node for context.</span></div>
+</section>
+
+<section class="section" id="contact">
+  <div class="sec-header"><div class="sec-label">Contact</div></div>
+  <div class="contact-grid">
+    <div class="contact-cta">
+      <div>
+        <div class="cta-text">Open to full-time roles. Available now.</div>
+        <div class="cta-sub">SWE · Cloud · IT Support · OPT authorized</div>
+      </div>
+      <button class="btn-hire" onclick="window.location='mailto:yasinsyed.ca@gmail.com'">Send email</button>
+    </div>
+    <div class="contact-cell">
+      <div class="label">Email</div>
+      <div class="value"><a href="mailto:yasinsyed.ca@gmail.com">yasinsyed.ca@gmail.com</a></div>
+    </div>
+    <div class="contact-cell">
+      <div class="label">Location</div>
+      <div class="value" style="color:#888;">Los Angeles, CA · On-site or Remote</div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <p>syedyasin.com</p>
+  <p>© 2026 Yasin Ali Syed</p>
+</footer>
+
+<script>
+const info={
+  center:{t:'Cloud Computing',d:'The hub of everything. Cloud means running servers, storage, and software over the internet. AWS is the dominant platform — all roads lead here.'},
+  linux:{t:'Linux — 100%',d:'Done. Powers ~95% of cloud servers. SSH, file management, permissions, process management, shell scripting — comfortable across the board.'},
+  git:{t:'Git & Version Control — 10%',d:'Just starting. Git tracks code changes and enables collaboration. GitHub is where projects live publicly. Next step: daily practice with commits and branches.'},
+  virt:{t:'Virtualization — 10%',d:'Just starting. Virtual machines let one physical server run many isolated environments. AWS EC2 is built on this concept.'},
+  net:{t:'Networking (TCP/IP) — 50%',d:'Halfway there. Understanding how data travels — IPs, ports, protocols. Needed for configuring VPCs, security groups, and load balancers on AWS.'},
+  dns:{t:'DNS & Firewalls — 10%',d:'Just starting. DNS maps domain names to IP addresses. Firewalls control what traffic gets in or out. Both come up constantly in cloud deployments.'},
+  py:{t:'Python / Bash — 60%',d:'Solid foundation. Python for automation and scripting, Bash for server-side tasks and deployments. Both are daily tools in cloud and DevOps work.'},
+  iac:{t:'IaC (Terraform) — 10%',d:'Just starting. Infrastructure as Code means defining cloud resources in code files — versioned, repeatable, automated. Terraform is the industry standard.'},
+  aws:{t:'AWS Core Services — 70%',d:'Strong foundation. EC2, S3, IAM, VPC, RDS — the core building blocks. Actively working on projects that use these services end to end.'},
+  docker:{t:'Docker & Kubernetes — 10%',d:'Just starting. Docker packages apps into containers. Kubernetes manages them at scale. Used in nearly every modern cloud deployment pipeline.'},
+  cicd:{t:'CI/CD Pipelines — 10%',d:'Just starting. Automated workflows that test and deploy code on every push. GitHub Actions and AWS CodePipeline are the key tools to learn next.'},
+};
+function showInfo(key){
+  const d=info[key];if(!d)return;
+  document.getElementById('node-info').innerHTML='<strong>'+d.t+'</strong>'+d.d;
+}
+</script>
+</body>
+</html>
